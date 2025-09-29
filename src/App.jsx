@@ -205,7 +205,7 @@ export default function App() {
             />
             <PriceCard
               name="Growth"
-              price="$649"
+              price="$849"
               period="mo"
               featured
               note="Up to 4 accounts, ≤ 300 txns/mo"
