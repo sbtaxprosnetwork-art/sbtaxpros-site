@@ -1,5 +1,20 @@
 import React from "react";
-import { ArrowRight, CheckCircle2, Shield, Calculator, FileSpreadsheet, Receipt, CreditCard, Phone, Mail, Calendar, Star, Building2 } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Shield,
+  Calculator,
+  FileSpreadsheet,
+  Receipt,
+  CreditCard,
+  Phone,
+  Mail,
+  Calendar,
+  Star,
+  Building2,
+} from "lucide-react";
+
+const BOOK_URL = "/book/"; // single source of truth
 
 const Container = ({ children, className = "" }) => (
   <div className={`mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 ${className}`}>{children}</div>
@@ -45,12 +60,13 @@ const PriceCard = ({ name, price, period, highlights = [], cta = "Get Started", 
       ))}
     </ul>
     <a
-      href="#contact"
+      href={BOOK_URL}
       className={`mt-6 inline-flex items-center justify-center rounded-xl border px-4 py-2 text-sm font-semibold transition ${
         featured
           ? "border-indigo-700 bg-indigo-600 text-white hover:bg-indigo-700"
           : "border-gray-300 bg-white text-gray-900 hover:bg-gray-50"
       }`}
+      aria-label={`${cta} — Free Consult`}
     >
       {cta}
       <ArrowRight className="ml-2 h-4 w-4" />
@@ -74,10 +90,10 @@ export default function App() {
             <a href="#faq" className="hover:text-indigo-600">FAQ</a>
           </nav>
           <div className="hidden items-center gap-3 md:flex">
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-3 py-2 text-sm font-semibold hover:bg-gray-50">
+            <a href={BOOK_URL} className="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-3 py-2 text-sm font-semibold hover:bg-gray-50">
               <Phone className="h-4 w-4" /> Contact
             </a>
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700">
+            <a href={BOOK_URL} className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700">
               Free Consult <ArrowRight className="h-4 w-4" />
             </a>
           </div>
@@ -88,7 +104,7 @@ export default function App() {
         <Container>
           <div className="grid items-center gap-10 md:grid-cols-2">
             <div>
-              <Pill>Bookkeeping • Payroll • Taxes • Catch‑Up</Pill>
+              <Pill>Bookkeeping • Payroll • Taxes • Catch-Up</Pill>
               <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
                 Stay compliant. Grow faster.
               </h1>
@@ -96,10 +112,18 @@ export default function App() {
                 SBTaxPros handles your books, payroll, and tax filings—so you can focus on revenue. The cost of staying ahead is about the same as IRS and state penalties—only without the stress.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700">
+                <a
+                  href={BOOK_URL}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700"
+                  aria-label="Start Your Free Consult"
+                >
                   Start Your Free Consult <ArrowRight className="h-4 w-4" />
                 </a>
-                <a href="#pricing" className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold hover:bg-gray-50">
+                <a
+                  href={BOOK_URL}
+                  className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold hover:bg-gray-50"
+                  aria-label="See Pricing and Book"
+                >
                   See Pricing
                 </a>
               </div>
@@ -115,14 +139,14 @@ export default function App() {
                   <Feature icon={FileSpreadsheet} title="Full Bookkeeping">
                     Monthly categorization, reconciliations, P&L, balance sheet, and KPI snapshots.
                   </Feature>
-                  <Feature icon={Calculator} title="Tax Filing & Catch‑Up">
-                    Sales & payroll tax, federal/state income returns, and penalty‑proof planning.
+                  <Feature icon={Calculator} title="Tax Filing & Catch-Up">
+                    Sales & payroll tax, federal/state income returns, and penalty-proof planning.
                   </Feature>
                   <Feature icon={CreditCard} title="Payroll & 1099s">
-                    Accurate payroll runs, filings, and year‑end forms without headaches.
+                    Accurate payroll runs, filings, and year-end forms without headaches.
                   </Feature>
                   <Feature icon={Shield} title="Compliance Plans">
-                    Proactive reminders, quarterly reviews, and audit‑ready documentation.
+                    Proactive reminders, quarterly reviews, and audit-ready documentation.
                   </Feature>
                 </div>
               </div>
@@ -135,25 +159,25 @@ export default function App() {
         <Container>
           <div className="mx-auto mb-10 max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight">What we do</h2>
-            <p className="mt-3 text-gray-600">Practical, done‑for‑you support for small and growing businesses.</p>
+            <p className="mt-3 text-gray-600">Practical, done-for-you support for small and growing businesses.</p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <Feature icon={FileSpreadsheet} title="Monthly Bookkeeping">
-              Clean, current books with bank/credit‑card reconciliations, P&L and balance sheet delivered monthly.
+              Clean, current books with bank/credit-card reconciliations, P&L and balance sheet delivered monthly.
             </Feature>
             <Feature icon={CreditCard} title="Payroll Administration">
-              Setup and run payroll, file payroll taxes, manage deductions and year‑end W‑2/1099 forms.
+              Setup and run payroll, file payroll taxes, manage deductions and year-end W-2/1099 forms.
             </Feature>
             <Feature icon={Calculator} title="Tax Prep & Filing">
               Federal & state returns, sales/use tax, estimated payments, and strategic tax planning.
             </Feature>
-            <Feature icon={Receipt} title="Catch‑Up & Clean‑Up">
+            <Feature icon={Receipt} title="Catch-Up & Clean-Up">
               Behind on books or filings? We restore order fast and align you to a compliance plan.
             </Feature>
             <Feature icon={Shield} title="Compliance & Advisory">
-              Quarterly reviews, entity guidance, and audit‑ready documentation so you’re never surprised.
+              Quarterly reviews, entity guidance, and audit-ready documentation so you’re never surprised.
             </Feature>
-            <Feature icon={Building2} title="Back‑Office Outsourcing">
+            <Feature icon={Building2} title="Back-Office Outsourcing">
               AP/AR, invoicing, and document workflows that scale without hiring a full finance team.
             </Feature>
           </div>
@@ -164,7 +188,7 @@ export default function App() {
         <Container>
           <div className="mx-auto mb-10 max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight">Simple, transparent pricing</h2>
-            <p className="mt-3 text-gray-600">Plans sized for where you are—upgrade anytime. Catch‑Up priced separately after a quick assessment.</p>
+            <p className="mt-3 text-gray-600">Plans sized for where you are—upgrade anytime. Catch-Up priced separately after a quick assessment.</p>
           </div>
           <div className="grid gap-6 lg:grid-cols-3">
             <PriceCard
@@ -196,10 +220,10 @@ export default function App() {
               name="Scale"
               price="Custom"
               period="quote"
-              note="Complex ops, multi‑entity, or higher volume"
+              note="Complex ops, multi-entity, or higher volume"
               highlights={[
                 "Advanced workflows (AP/AR)",
-                "Sales tax & multi‑state",
+                "Sales tax & multi-state",
                 "Quarterly advisory + planning",
                 "Dedicated account manager",
               ]}
@@ -207,8 +231,17 @@ export default function App() {
             />
           </div>
           <p className="mt-6 text-center text-sm text-gray-600">
-            <strong>Heads‑up:</strong> The cost of staying current is often comparable to penalties and interest for falling behind. Choose certainty—choose a plan.
+            <strong>Heads-up:</strong> The cost of staying current is often comparable to penalties and interest for falling behind. Choose certainty—choose a plan.
           </p>
+          <div className="mt-6 text-center">
+            <a
+              href={BOOK_URL}
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700"
+              aria-label="Book from pricing section"
+            >
+              Book Your Free Consult <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
         </Container>
       </Section>
 
@@ -218,30 +251,46 @@ export default function App() {
             <div>
               <h2 className="text-3xl font-bold tracking-tight">Why SBTaxPros</h2>
               <ul className="mt-6 space-y-4">
-                {["Zero‑drama compliance","Owner‑friendly dashboards","Fast catch‑up with clear milestones","Proactive reminders & quarterly reviews","Seamless tools: QuickBooks, Gusto, Stripe, more"].map((item, i) => (
+                {[
+                  "Zero-drama compliance",
+                  "Owner-friendly dashboards",
+                  "Fast catch-up with clear milestones",
+                  "Proactive reminders & quarterly reviews",
+                  "Seamless tools: QuickBooks, Gusto, Stripe, more",
+                ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-gray-700">
                     <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-600" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
+              <div className="mt-6">
+                <a
+                  href={BOOK_URL}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700"
+                >
+                  Book a Free Strategy Call <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
             </div>
             <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
               <blockquote className="text-gray-800">
-                <p className="text-lg font-medium">“We were 18 months behind. SBTaxPros cleaned up our books, filed everything, and set us on a plan—we’ve been stress‑free ever since.”</p>
-                <footer className="mt-4 text-sm text-gray-600">— A real small‑business owner</footer>
+                <p className="text-lg font-medium">
+                  “We were 18 months behind. SBTaxPros cleaned up our books, filed everything, and set us on a plan—we’ve been stress-free ever since.”
+                </p>
+                <footer className="mt-4 text-sm text-gray-600">— A real small-business owner</footer>
               </blockquote>
               <div className="mt-6 grid grid-cols-3 gap-4 text-center">
                 <div className="rounded-xl border border-gray-200 bg-white p-4">
                   <div className="text-2xl font-bold">95%</div>
-                  <div className="text-xs text-gray-600">On‑time filings</div>
+                  <div className="text-xs text-gray-600">On-time filings</div>
                 </div>
                 <div className="rounded-xl border border-gray-200 bg-white p-4">
                   <div className="text-2xl font-bold"><span className="align-text-top">$</span>0</div>
                   <div className="text-xs text-gray-600">Surprise fees</div>
                 </div>
                 <div className="rounded-xl border border-gray-200 bg-white p-4">
-                  <div className="text-2xl font-bold">24‑48h</div>
+                  <div className="text-2xl font-bold">24-48h</div>
                   <div className="text-xs text-gray-600">Support response</div>
                 </div>
               </div>
@@ -259,7 +308,7 @@ export default function App() {
           <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white">
             {[
               {
-                q: "Do you handle prior‑year catch‑ups?",
+                q: "Do you handle prior-year catch-ups?",
                 a: "Yes. We assess the scope, fix the books, file missing returns, and move you onto a monthly plan so you stay current.",
               },
               {
@@ -292,42 +341,41 @@ export default function App() {
           <div className="grid gap-10 md:grid-cols-2">
             <div>
               <h2 className="text-3xl font-bold tracking-tight">Let’s make compliance boring.</h2>
-              <p className="mt-3 text-gray-600">Tell us about your business and get a free, no‑pressure assessment. We’ll propose a plan and timeline—often with immediate quick wins.</p>
+              <p className="mt-3 text-gray-600">
+                Tell us about your business and get a free, no-pressure assessment. We’ll propose a plan and timeline—often with immediate quick wins.
+              </p>
               <div className="mt-6 space-y-3 text-sm text-gray-700">
-                <p className="flex items-center gap-2"><Phone className="h-4 w-4 text-indigo-600" /> (XXX) XXX‑XXXX</p>
-                <p className="flex items-center gap-2"><Mail className="h-4 w-4 text-indigo-600" /> hello@sbtaxpros.com</p>
-                <p className="flex items-center gap-2"><Calendar className="h-4 w-4 text-indigo-600" /> <a className="underline decoration-indigo-300 underline-offset-4 hover:text-indigo-700" href="#">Book a Calendly call</a></p>
+                <p className="flex items-center gap-2"><Phone className="h-4 w-4 text-indigo-600" /> (240) 422-1679</p>
+                <p className="flex items-center gap-2"><Mail className="h-4 w-4 text-indigo-600" /> hello@sbtaxpros.net</p>
+                <p className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4 text-indigo-600" />
+                  <a className="underline decoration-indigo-300 underline-offset-4 hover:text-indigo-700" href={BOOK_URL}>
+                    Book a Calendly call
+                  </a>
+                </p>
               </div>
               <ul className="mt-6 space-y-2 text-xs text-gray-600">
                 <li className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600" /> Secure, private onboarding</li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600" /> Month‑to‑month—no long contracts</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600" /> Month-to-month—no long contracts</li>
                 <li className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600" /> Clear deliverables & response times</li>
               </ul>
             </div>
-            <form className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-              <div className="grid gap-4">
-                <div>
-                  <label className="mb-1 block text-sm font-medium">Name</label>
-                  <input className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-600 focus:outline-none" placeholder="Your full name" />
-                </div>
-                <div>
-                  <label className="mb-1 block text-sm font-medium">Email</label>
-                  <input type="email" className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-600 focus:outline-none" placeholder="you@company.com" />
-                </div>
-                <div>
-                  <label className="mb-1 block text-sm font-medium">Company</label>
-                  <input className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-600 focus:outline-none" placeholder="Business name" />
-                </div>
-                <div>
-                  <label className="mb-1 block text-sm font-medium">What do you need help with?</label>
-                  <textarea rows={4} className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-600 focus:outline-none" placeholder="e.g., catch‑up for 2023, monthly bookkeeping, payroll setup" />
-                </div>
-                <button type="button" className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700">
-                  Send Inquiry
-                </button>
-                <p className="text-xs text-gray-500">By submitting, you agree to be contacted about your request. We never sell your data.</p>
-              </div>
-            </form>
+
+            {/* Replaced form submit with a strong CTA to booking */}
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+              <h3 className="mb-3 text-lg font-semibold">Ready to move forward?</h3>
+              <p className="mb-4 text-sm text-gray-700">
+                Skip the form—book your free 30-minute consult now. We’ll review your situation and outline your Growth-Focused Compliance Plan.
+              </p>
+              <a
+                href={BOOK_URL}
+                className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700"
+                aria-label="Book from contact section"
+              >
+                Book Your Free Consult <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+              <p className="mt-3 text-xs text-gray-500">Prefer email? Reach us at hello@sbtaxpros.net</p>
+            </div>
           </div>
         </Container>
       </Section>
