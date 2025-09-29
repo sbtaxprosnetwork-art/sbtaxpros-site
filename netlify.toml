@@ -10,3 +10,16 @@
   to = "https://sbtaxpros.net/:splat"
   status = 301
   force = true
+
+# Pretty URLs for the new pages
+[[redirects]]
+  from = "/book"
+  to   = "/book/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/thank-you"
+  to   = "/thank-you/"
+  status = 200
+  force = true
